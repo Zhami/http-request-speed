@@ -8,6 +8,9 @@
 
 #### Example Run for request-speed.js
 
+This version GETs 25 results from a generic search at AutoTrader.com
+(see the "num_records" term of the Query String in the variable rqstURI)
+
 	$ node request-speed.js 
 	[0] starting... loading modules...
 	[81] modules loaded
@@ -16,7 +19,7 @@
 	[938] STATUS: 200
 	[3175] Data Complete in 551 chunks comprising 488969 byte
 
-The numbers in square brackets ae milliseconds since the code starts executing. So:
+The numbers in square brackets are milliseconds since the code starts executing. So:
 
 1. latency to response is ~ 800 ms   (938 - 139)
 2.	download is ~ 2.2 seconds   (3175 - 938)
@@ -26,12 +29,12 @@ When I GET the specified URL with Safari, the WebKit Resources timing display re
 1. latency to response is ~ 700 ms
 2. download is ~ 300 ms
 
-btw: This example requests 25 search results (see the "num_records" term of the Query String in the variable rqstURI.
 
 
 #### Example Run for request-speed2.js
 
-This version just changes the URL to GET the nodeJS  documentation all on one page.
+This version GETs the nodeJS documentation all on one page.
+(http://nodejs.org/docs/v0.4.3/api/all.html)
 
 Results:
 
@@ -53,4 +56,34 @@ When I GET the page using Safari:
 1. latency is ~ 200 ms
 2. download is ~ 800 ms
 
-So, in this test case they are quite close.
+And so, in this test case they are quite close.
+
+
+#### Example Run for request-speed3.js
+
+This version GETs the page for a book on Amazon.com
+
+Results:
+
+$ node request-speed3.js 
+	[0] starting... loading modules...
+	[14] modules loaded
+	[14] building request...
+	[29] issuing request...
+	[404] STATUS: 200
+	[2538] Data Complete in 313 chunks comprising 315590 byte
+
+So:
+
+1. latency to response is ~ 400 ms
+2. download is ~ 2 seconds
+
+When I GET the page using Safari:
+
+1. latency is ~ 600 ms
+2. download is ~ 1.4 seconds
+
+And so, in this test case the initial response was quicker for node, but the download was much quicker in Safari.
+
+
+
